@@ -1,6 +1,5 @@
 const letter = document.querySelector("#letter");
 const word = document.querySelector("#word");
-const btnStart = document.querySelector("#btnStart");
 const keyA = document.querySelector(".A");
 const keyB = document.querySelector(".B");
 const keyC = document.querySelector(".C");
@@ -28,6 +27,11 @@ const keyX = document.querySelector(".X");
 const keyY = document.querySelector(".Y");
 const keyZ = document.querySelector(".Z");
 const touchKeySound = new Audio("./assets/audio/touchKey.mp3");
+const lose = new Audio("./assets/audio/lose.mp3");
+const winner = new Audio("./assets/audio/winner.mp3");
+const theme = new Audio("./assets/audio/theme.mp3");
+const count = document.querySelector("#count");
+const btnRestart = document.querySelector("#btnRestart");
 
 let tabWord = [
   "fermentation",
@@ -50,7 +54,7 @@ let tabWord = [
   "echelle",
   "chaise",
   "table",
-  "refrigirateur",
+  "refrigerateur",
   "console",
   "plante",
   "mariage",
@@ -66,50 +70,74 @@ let tabWord = [
   "bronzage",
   "azimut",
   "sorciere",
-  "abominassion",
+  "abomination",
   "accordeoniste",
   "accouchement",
   "xylophone",
+  "developpement-web",
 ];
 
+theme.play();
+
+let life = 5;
 document.querySelector("#letter").focus();
 
-//mot choisi aléatoirement dans le tableau
 let wordChoice = tabWord[Math.floor(Math.random() * tabWord.length)];
-//affichage dans la console du mot aléatoire choisi
-console.log("le mot choisi aléatoirement est : " + wordChoice);
 
-//affichage dans la console longueur du mot
-console.log("le mot comporte " + wordChoice.length + " lettres");
+let wordMasked = wordChoice.replace(/[a-z]/g, "_");
+document.querySelector("#word").textContent = wordMasked;
 
-//boucle for de 1 à longueur du mot faire compteur
-for (let i = 1; i === wordChoice.length; i++) {
-  //créér élément enfant span de div #word avec #letterMasked + compteur+1
-  const letterMasked = document.createElement("span");
-  letterMasked.id = "letterMasked" + i;
-  //créér texte dans la span
-  const spanLetterMasked = document.createTextNode("*");
-  //ajout enfant dans div #word
-  document.querySelector("#word").appendChild(letterMasked);
-  //ajout du texte "*" dans la span créée
-  letterMasked.appendChild(spanLetterMasked);
-}
+const checkLetter = (letter) => {
+  if (wordChoice.indexOf(letter) !== -1) {
+    // on a trouvé qqch
+    let newWord = "";
+    for (let i = 0; i <= wordChoice.length - 1; i++) {
+      if (wordChoice[i] == letter) {
+        newWord += letter;
+      } else {
+        newWord += wordMasked[i];
+      }
+    }
+    wordMasked = newWord;
 
-const checkLetter = () => {
-  //position de la lettre dans la chaîne de caractère
-  let position = wordChoice.indexOf(letter.value);
-  //variable qui récupère la 1ère position de la lettre recherchée
-  let posFirstLetter = position + 1;
-  //affichage dans la console de la position dans le mot de la lettre recherchées
-  console.log(posFirstLetter);
-  //boucle while recherche lettre identique dans le mot
-  while (position != -1) {
-    position = wordChoice.indexOf(letter.value, position + 1);
-    let posNextLetter = position + 1;
-    //affichage dans la console de la position dans le mot des lettres identiques recherchées
-    console.log(posNextLetter);
+    if (wordMasked == wordChoice) {
+      count.textContent = "WINNER";
+      document.querySelector("#count").style.color = "green";
+      document.querySelector("#keyboard").style.display = "none";
+      document.querySelector("#btnRestart").style.display = "block";
+      winner.play();
+      theme.pause();
+    }
+    document.querySelector("#word").textContent = newWord;
+  } else {
+    //on a rien trouivé
+    life--;
+    // let txtFail = life + " coups restants avant de crever comme un caca";
+    // if (life <= 1) txtFail = life + " coup restant";
+    // count.textContent = txtFail
+    if (life > 3) {
+      document.querySelector("#health5").style.display = "none";
+    } else if (life > 2) {
+      document.querySelector("#health4").style.display = "none";
+    } else if (life > 1) {
+      document.querySelector("#health3").style.display = "none";
+    } else if (life > 0) {
+      document.querySelector("#health2").style.display = "none";
+    } else if (life > -1) {
+      document.querySelector("#health1").style.display = "none";
+      document.querySelector("#word").textContent = wordChoice;
+      document.querySelector("#keyboard").style.display = "none";
+      count.textContent = "GAME OVER";
+      lose.play();
+      theme.pause();
+      document.querySelector("#btnRestart").style.display = "block";
+    }
   }
 };
+
+btnRestart.addEventListener("click", () => {
+  location.reload();
+});
 
 keyA.addEventListener("click", () => {
   letter.value = "a";

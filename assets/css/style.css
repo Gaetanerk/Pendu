@@ -1,7 +1,18 @@
+@import url(//db.onlinewebfonts.com/c/3dd8e3070d44f850ec584d32418be607?family=The+Wild+Breath+of+Zelda);
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
 #word {
   font-size: 5rem;
-  font-weight: bold;
   padding-top: 3rem;
+  text-transform: uppercase;
+  letter-spacing: 1.5rem;
+  text-align: center;
+  font-family: "The Wild Breath of Zelda";
+  color: #ed0f1b;
 }
 
 #letter {
@@ -10,17 +21,48 @@
   display: none;
 }
 
-#keybord {
+#keyboard {
   text-align: center;
-  margin-top: 400px;
+  margin-top: 75px;
 }
 
 #touch {
-  width: 80px;
-  height: 80px;
+  width: 70px;
+  height: 70px;
   border: 2px solid grey;
   border-radius: 5px;
   margin-top: 5px;
-  font-weight: bold;
+  font-family: "The Wild Breath of Zelda";
+  color: #f5e700;
   font-size: 3rem;
+  text-shadow: 1px 1px 2px #ed0f1b;
+}
+
+#count {
+  margin-top: 6rem;
+  font-size: 5rem;
+  color: red;
+  text-align: center;
+}
+
+#btnRestart {
+  margin: auto;
+  display: none;
+  text-align: center;
+  width: 20rem;
+  font-size: 3rem;
+  margin-top: 5rem;
+}
+
+#contain {
+  background: url("https://wallpaper.dog/large/20484908.jpg");
+  background-size: cover;
+  height: 100vh;
+}
+
+h1 {
+  font-family: "The Wild Breath of Zelda";
+  color: #f5e700;
+  font-size: 6rem;
+  text-align: center;
 }
