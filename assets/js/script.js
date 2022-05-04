@@ -102,9 +102,10 @@ const checkLetter = (letter) => {
 
     if (wordMasked == wordChoice) {
       count.textContent = "WINNER";
-      document.querySelector("#count").style.color = "green";
+      document.querySelector("#count").style.color = "#3CFB04";
       document.querySelector("#keyboard").style.display = "none";
       document.querySelector("#btnRestart").style.display = "block";
+      document.querySelector("#restartGame").style.display = "block";
       winner.play();
       theme.pause();
     }
@@ -131,6 +132,7 @@ const checkLetter = (letter) => {
       lose.play();
       theme.pause();
       document.querySelector("#btnRestart").style.display = "block";
+      document.querySelector("#restartGame").style.display = "block";
     }
   }
 };
