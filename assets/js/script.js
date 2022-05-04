@@ -75,6 +75,14 @@ let tabWord = [
   "accouchement",
   "xylophone",
   "developpement-web",
+  "recapitulation",
+  "enumeration",
+  "statistique",
+  "immatriculation",
+  "representation",
+  "denombrement",
+  "nomenclature",
+  "bibliographie",
 ];
 
 theme.play();
