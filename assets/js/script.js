@@ -89,7 +89,6 @@ document.querySelector("#word").textContent = wordMasked;
 
 const checkLetter = (letter) => {
   if (wordChoice.indexOf(letter) !== -1) {
-    // on a trouvé qqch
     let newWord = "";
     for (let i = 0; i <= wordChoice.length - 1; i++) {
       if (wordChoice[i] == letter) {
@@ -105,17 +104,12 @@ const checkLetter = (letter) => {
       document.querySelector("#count").style.color = "#3CFB04";
       document.querySelector("#keyboard").style.display = "none";
       document.querySelector("#btnRestart").style.display = "block";
-      document.querySelector("#restartGame").style.display = "block";
       winner.play();
       theme.pause();
     }
     document.querySelector("#word").textContent = newWord;
   } else {
-    //on a rien trouivé
     life--;
-    // let txtFail = life + " coups restants avant de crever comme un caca";
-    // if (life <= 1) txtFail = life + " coup restant";
-    // count.textContent = txtFail
     if (life > 3) {
       document.querySelector("#health5").style.display = "none";
     } else if (life > 2) {
