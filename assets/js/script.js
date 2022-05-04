@@ -83,15 +83,26 @@ let tabWord = [
   "denombrement",
   "nomenclature",
   "bibliographie",
+  "vasectomie",
+  "cesarienne",
+  "abdominoplastie",
+  "adenocarcinome",
+  "agoraphobie",
+  "algodystrophie",
+  "alzheimer",
+  "appendicectomie",
+  "bronchiolite",
+  "broncho-pneumopathie",
+  "cephalorachidien",
+  "demineralisation",
+  "desoxyribonucleique",
+  "drepanocytose",
 ];
 
 theme.play();
-
 let life = 5;
 document.querySelector("#letter").focus();
-
 let wordChoice = tabWord[Math.floor(Math.random() * tabWord.length)];
-
 let wordMasked = wordChoice.replace(/[a-z]/g, "_");
 document.querySelector("#word").textContent = wordMasked;
 
