@@ -149,3 +149,9 @@ createVirtualKeyboard();
 btnRestart.addEventListener("click", () => {
   location.reload();
 });
+
+window.document.body.onkeyup = (e) => {
+  if (letters.match(e.key)) {
+    if (!document.querySelector("#btn" + e.key).disabled) checkLetter(e.key);
+  }
+};
