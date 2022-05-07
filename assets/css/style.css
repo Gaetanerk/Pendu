@@ -57,6 +57,10 @@
   border: none;
 }
 
+#btnRestart:active {
+  transform: translate(0px, 5px);
+}
+
 #restartGame {
   display: none;
   font-family: "The Wild Breath of Zelda";
