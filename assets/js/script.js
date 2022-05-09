@@ -2,9 +2,10 @@ const letter = document.querySelector("#letter");
 const word = document.querySelector("#word");
 const keyboard = document.querySelector("#keyboard");
 const letters = "abcdefghijklmnopqrstuvwxyz";
-const touchKeySound = new Audio("./assets/audio/touchKey.mp3");
-const lose = new Audio("./assets/audio/lose.mp3");
-const winner = new Audio("./assets/audio/winner.mp3");
+const touchKeySound = new Audio("./assets/audio/touchKey.wav");
+const lose = new Audio("./assets/audio/lose.wav");
+const winner = new Audio("./assets/audio/winner.wav");
+const restart = new Audio("./assets/audio/restart.wav");
 const theme = new Audio("./assets/audio/theme.mp3");
 const count = document.querySelector("#count");
 const btnRestart = document.querySelector("#btnRestart");
@@ -147,11 +148,13 @@ const createVirtualKeyboard = () => {
 createVirtualKeyboard();
 
 btnRestart.addEventListener("click", () => {
+  restart.play();
   location.reload();
 });
 
 window.document.body.onkeyup = (e) => {
   if (letters.match(e.key)) {
     if (!document.querySelector("#btn" + e.key).disabled) checkLetter(e.key);
+    touchKeySound.play();
   }
 };
