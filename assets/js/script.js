@@ -10,6 +10,10 @@ const theme = new Audio("./assets/audio/theme.mp3");
 const count = document.querySelector("#count");
 const btnRestart = document.querySelector("#btnRestart");
 const touch = document.querySelector(".touch");
+let volume = document.querySelector("#volume-control");
+volume.addEventListener("change", function (e) {
+  theme.volume = e.currentTarget.value / 100;
+});
 
 let tabWord = [
   "fermentation",
